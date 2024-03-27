@@ -1,9 +1,19 @@
 const express = require("express");
 const { config } = require("dotenv");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 
 const app = express();
 config();
+app.use(routes);
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    error:
+      err.message || `There was some error while execting the server ${err}`,
+  });
+});
+
 const listener = app.listen(
   process.env.API_PORT,
   process.env.API_HOST,
