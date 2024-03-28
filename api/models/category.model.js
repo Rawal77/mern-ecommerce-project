@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
-const Brand = model(
-  "Brand",
+const Category = model(
+  "Category",
   new Schema(
     {
       name: {
@@ -20,4 +20,4 @@ const Brand = model(
   )
 );
 
-module.exports = Brand;
+module.exports = Category;
