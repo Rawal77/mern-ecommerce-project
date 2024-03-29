@@ -7,9 +7,9 @@ const { auth, cms } = require("../middleware");
 router.use("/auth", AuthRoutes);
 router.use("/cms", auth, cms, CmsRoutes);
 
-router.get("/", (req, res, next) => {
-  res.json({
-    message: "Hello World",
+router.get("/image/:filename", (req, res, next) => {
+  res.sendFile(`uploads/${req.params.filename}`, {
+    root: "./",
   });
 });
 

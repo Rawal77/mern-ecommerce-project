@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../models");
+const multer = require("multer");
 
 const auth = async (req, res, next) => {
   if ("authorization" in req.headers) {
@@ -53,4 +54,29 @@ const adminOnly = (req, res, next) => {
   }
 };
 
-module.exports = { auth, cms, adminOnly };
+const fileUpload = (mimeTypes = []) =>
+  multer({
+    storage: multer.diskStorage({
+      destination: (req, file, callback) => callback(null, "uploads"),
+      filename: (req, file, callback) => {
+        const ext = file.originalname.split(".").pop();
+        const filename =
+          Date.now() + `${Math.floor(Math.random() * 100) + 1}` + `.${ext}`;
+        callback(null, filename);
+      },
+    }),
+
+    fileFilter: (req, file, callback) => {
+      if (mimeTypes.length > 0) {
+        if (mimeTypes.includes(file.mimetype)) {
+          callback(null, true);
+        } else {
+          callback({ message: "File type not supported" }, false);
+        }
+      } else {
+        callback(null, true);
+      }
+    },
+  });
+
+module.exports = { auth, cms, adminOnly, fileUpload };
