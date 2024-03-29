@@ -1,6 +1,7 @@
 const { showError } = require("../../lib");
 const { User } = require("../../models");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 class AuthController {
   register = async (req, res, next) => {
@@ -30,7 +31,35 @@ class AuthController {
       showError(error, next);
     }
   };
-  login = async (req, res, next) => {};
+  login = async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+      const user = await User.findOne({ email });
+      if (user) {
+        if (bcrypt.compareSync(password, user.password)) {
+          const token = jwt.sign(
+            {
+              id: user._id,
+              iat: Math.floor(Date.now() / 1000) - 30,
+              exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
+            },
+            process.env.JWT_SECRET
+          );
+          res.json({ token, user });
+        }
+      } else {
+        next({
+          status: 400,
+          message: `Token missing`,
+        });
+      }
+    } catch (error) {
+      next({
+        status: 400,
+        message: `Token Invalid`,
+      });
+    }
+  };
 }
 
 module.exports = new AuthController();
