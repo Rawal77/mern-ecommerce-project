@@ -28,6 +28,7 @@ class ProductController {
           _id: product._id,
           name: product.name,
           summary: product.summary,
+          description: product.description,
           price: product.price,
           discounted_price: product.discounted_price,
           category_id: product.category_id,
