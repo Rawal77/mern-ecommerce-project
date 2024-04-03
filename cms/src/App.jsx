@@ -1,5 +1,5 @@
-function App() {
-  return;
-}
+import { CmsRoutes } from "./routes/CmsRoutes";
 
-export default App;
+export default function App() {
+  return <CmsRoutes></CmsRoutes>;
+}
