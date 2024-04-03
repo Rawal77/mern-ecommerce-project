@@ -2,9 +2,11 @@ const express = require("express");
 const { config } = require("dotenv");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const cors = require("cors");
 
 config();
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,13 +1,29 @@
 import { useState } from "react";
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Col, Container, Row, Form } from "react-bootstrap";
 import { setInForm } from "../../lib";
-import { FormField } from "../../components";
+import { FormField, SubmitBtn } from "../../components";
+import http from "../../http";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store";
 
 export const Login = () => {
   const [form, setForm] = useState({});
   const [remember, setRemember] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
   const handleSubmit = ev => {
     ev.preventDefault();
+    setLoading(true);
+
+    http
+      .post("auth/login", form)
+      .then(({ data }) => {
+        dispatch(setUser(data.user));
+      })
+      .catch()
+      .finally(() => setLoading(false));
   };
   return (
     <Container>
@@ -27,7 +43,7 @@ export const Login = () => {
               <Form onSubmit={handleSubmit}>
                 <FormField label="Email" title="email">
                   <Form.Control
-                    type="text"
+                    type="email"
                     name="email"
                     id="email"
                     onChange={ev => setInForm(ev, form, setForm)}
@@ -35,7 +51,7 @@ export const Login = () => {
                 </FormField>
                 <FormField label="Password" title="password">
                   <Form.Control
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     onChange={ev => setInForm(ev, form, setForm)}
@@ -52,9 +68,10 @@ export const Login = () => {
                   </Form.Check.Label>
                 </div>
                 <div className="mb-3 d-grid">
-                  <Button variant="dark">
-                    <i className="fa-solid fa-sign-in-alt me-2"></i>Login
-                  </Button>
+                  <SubmitBtn
+                    icon="fa-sign-in-alt"
+                    label="Log In"
+                    loading={loading}></SubmitBtn>
                 </div>
               </Form>
             </Col>

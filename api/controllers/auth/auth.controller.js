@@ -46,18 +46,20 @@ class AuthController {
             process.env.JWT_SECRET
           );
           res.json({ token, user });
+        } else {
+          next({
+            status: 422,
+            message: `Password isn't correct`,
+          });
         }
       } else {
         next({
-          status: 400,
-          message: `Token missing`,
+          status: 422,
+          message: `Email didn't found`,
         });
       }
     } catch (error) {
-      next({
-        status: 400,
-        message: `Token Invalid`,
-      });
+      showError(error, next);
     }
   };
 }
