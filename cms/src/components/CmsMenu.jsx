@@ -1,8 +1,11 @@
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export const CmsMenu = () => {
-  return (
+  const user = useSelector(state => state.user.value);
+
+  return Object.keys(user).length ? (
     <Navbar variant="light" bg="light" expand="lg">
       <Container>
         <Link to="/" className="navbar-brand">
@@ -40,5 +43,5 @@ export const CmsMenu = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+  ) : null;
 };
