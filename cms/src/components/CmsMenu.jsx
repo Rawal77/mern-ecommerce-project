@@ -38,10 +38,10 @@ export const CmsMenu = () => {
               }
               id="basic-nav-dropdown"
               align="end">
-              <Link to="" className="dropdown-item">
+              <Link to="profile/edit" className="dropdown-item">
                 <i className="fa-solid fa-user-edit me-2"></i>Edit Profile
               </Link>
-              <Link to="" className="dropdown-item">
+              <Link to="profile/password" className="dropdown-item">
                 <i className="fa-solid fa-asterisk edit me-2"></i>Change
                 Password
               </Link>

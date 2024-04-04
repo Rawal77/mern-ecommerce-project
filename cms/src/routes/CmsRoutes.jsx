@@ -14,6 +14,23 @@ export const CmsRoutes = () => {
               <PrivateRoutes
                 element={<Pages.Dashboard></Pages.Dashboard>}></PrivateRoutes>
             }></Route>
+          <Route
+            path="profile/edit"
+            element={
+              <PrivateRoutes
+                element={
+                  <Pages.Profile.Edit></Pages.Profile.Edit>
+                }></PrivateRoutes>
+            }></Route>
+
+          <Route
+            path="profile/password"
+            element={
+              <PrivateRoutes
+                element={
+                  <Pages.Profile.Password></Pages.Profile.Password>
+                }></PrivateRoutes>
+            }></Route>
           <Route path="login" element={<Pages.Login></Pages.Login>}></Route>
         </Route>
       </Routes>

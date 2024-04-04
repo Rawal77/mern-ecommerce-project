@@ -25,7 +25,12 @@ http.interceptors.request.use(
 );
 
 http.interceptors.response.use(
-  response => response,
+  response => {
+    if ("success" in response.data) {
+      toast.success(response.data.success);
+    }
+    return response;
+  },
   err => {
     if ("response" in err && "error" in err.response.data) {
       toast.error(err.response.data.error);
