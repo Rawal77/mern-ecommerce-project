@@ -1,9 +1,17 @@
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Button, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeStorage } from "../lib";
+import { clearUser } from "../store";
 
 export const CmsMenu = () => {
   const user = useSelector(state => state.user.value);
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    removeStorage("cmstoken");
+    dispatch(clearUser());
+  }
 
   return Object.keys(user).length ? (
     <Navbar variant="light" bg="light" expand="lg">
@@ -24,20 +32,26 @@ export const CmsMenu = () => {
             <NavDropdown
               title={
                 <>
-                  <i className="fa-solid fa-user-circle me-2"></i>Demo User
+                  <i className="fa-solid fa-user-circle me-2"></i>
+                  {user.name}
                 </>
               }
               id="basic-nav-dropdown"
               align="end">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              <Link to="" className="dropdown-item">
+                <i className="fa-solid fa-user-edit me-2"></i>Edit Profile
+              </Link>
+              <Link to="" className="dropdown-item">
+                <i className="fa-solid fa-asterisk edit me-2"></i>Change
+                Password
+              </Link>
+              <NavDropdown.Divider></NavDropdown.Divider>
+              <Button
+                variant="link"
+                className="dropdown-item rounded-0"
+                onClick={handleLogout}>
+                <i className="fa-solid fa-sign-out-alt me-2 "></i>LogOut
+              </Button>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
