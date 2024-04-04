@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Col, Container, Row, Form } from "react-bootstrap";
-import { setInForm } from "../../lib";
+import { inStorage, setInForm } from "../../lib";
 import { FormField, SubmitBtn } from "../../components";
 import http from "../../http";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [form, setForm] = useState({});
@@ -12,6 +13,7 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = ev => {
     ev.preventDefault();
@@ -21,6 +23,8 @@ export const Login = () => {
       .post("auth/login", form)
       .then(({ data }) => {
         dispatch(setUser(data.user));
+        inStorage("cmstoken", data.token, remember);
+        navigate("/");
       })
       .catch()
       .finally(() => setLoading(false));

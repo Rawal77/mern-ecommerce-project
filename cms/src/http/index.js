@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { fromStorage } from "../lib";
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -8,6 +9,20 @@ const http = axios.create({
     Accept: "Application/json",
   },
 });
+http.interceptors.request.use(
+  config => {
+    const token = fromStorage("cmstoken");
+    if (token) {
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${token}`,
+      };
+    }
+
+    return config;
+  },
+  err => Promise.reject(err)
+);
 
 http.interceptors.response.use(
   response => response,
