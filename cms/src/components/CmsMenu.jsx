@@ -23,7 +23,7 @@ export const CmsMenu = () => {
         <Navbar.Collapse>
           <Nav className="me-auto mb-2 mb-lg-0">
             <Nav.Item>
-              <Link to="" className="nav-link">
+              <Link to="/staffs" className="nav-link">
                 <i className="fa-solid fa-users me-2"></i>Staffs
               </Link>
             </Nav.Item>
