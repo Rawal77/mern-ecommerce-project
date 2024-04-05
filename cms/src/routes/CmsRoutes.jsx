@@ -2,6 +2,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Layout } from "../components";
 import * as Pages from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
+import { AdminRoutes } from "./AdminRoutes";
 
 export const CmsRoutes = () => {
   return (
@@ -35,7 +36,10 @@ export const CmsRoutes = () => {
           <Route
             path="staffs"
             element={
-              <PrivateRoutes element={<Outlet></Outlet>}></PrivateRoutes>
+              <PrivateRoutes
+                element={
+                  <AdminRoutes element={<Outlet></Outlet>}></AdminRoutes>
+                }></PrivateRoutes>
             }>
             <Route
               index
@@ -48,6 +52,54 @@ export const CmsRoutes = () => {
             <Route
               path=":id/edit"
               element={<Pages.Staffs.Edit></Pages.Staffs.Edit>}></Route>
+          </Route>
+          <Route
+            path="categories"
+            element={
+              <PrivateRoutes element={<Outlet></Outlet>}></PrivateRoutes>
+            }>
+            <Route
+              index
+              element={<Pages.Categories.List></Pages.Categories.List>}></Route>
+
+            <Route
+              path="create"
+              element={
+                <Pages.Categories.Create></Pages.Categories.Create>
+              }></Route>
+
+            <Route
+              path=":id/edit"
+              element={<Pages.Categories.Edit></Pages.Categories.Edit>}></Route>
+          </Route>
+          <Route
+            path="brands"
+            element={
+              <PrivateRoutes element={<Outlet></Outlet>}></PrivateRoutes>
+            }>
+            <Route
+              index
+              element={<Pages.Brands.List></Pages.Brands.List>}></Route>
+
+            <Route
+              path="create"
+              element={<Pages.Brands.Create></Pages.Brands.Create>}></Route>
+
+            <Route
+              path=":id/edit"
+              element={<Pages.Brands.Edit></Pages.Brands.Edit>}></Route>
+          </Route>
+          <Route
+            path="customers"
+            element={
+              <PrivateRoutes element={<Outlet></Outlet>}></PrivateRoutes>
+            }>
+            <Route
+              index
+              element={<Pages.Customers.List></Pages.Customers.List>}></Route>
+            <Route
+              path=":id/edit"
+              element={<Pages.Customers.Edit></Pages.Customers.Edit>}></Route>
           </Route>
           <Route path="login" element={<Pages.Login></Pages.Login>}></Route>
         </Route>
