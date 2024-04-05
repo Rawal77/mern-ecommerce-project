@@ -1,0 +1,8 @@
+.sortable {
+  cursor: pointer;
+  transition: all 0.2s ease-in 0s;
+}
+
+.sortable:hover {
+  opacity: 0.85;
+}

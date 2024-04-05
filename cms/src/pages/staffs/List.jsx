@@ -62,6 +62,24 @@ export const List = () => {
                 <Loading></Loading>
               ) : (
                 <DataTable
+                  searchable={[
+                    "Name",
+                    "Email",
+                    "Phone",
+                    "Address",
+                    "Status",
+                    "Created At",
+                    "Updated At",
+                  ]}
+                  sortable={[
+                    "Name",
+                    "Email",
+                    "Phone",
+                    "Address",
+                    "Status",
+                    "Created At",
+                    "Updated At",
+                  ]}
                   data={staffs.map(staff => {
                     return {
                       Name: staff.name,
