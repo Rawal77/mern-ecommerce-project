@@ -1,6 +1,6 @@
 import { Button, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { removeStorage } from "../lib";
 import { clearUser } from "../store";
 
@@ -24,25 +24,30 @@ export const CmsMenu = () => {
           <Nav className="me-auto mb-2 mb-lg-0">
             {user.type == "Admin" && (
               <Nav.Item>
-                <Link to="/staffs" className="nav-link">
+                <NavLink to="/staffs" className="nav-link">
                   <i className="fa-solid fa-users me-2"></i>Staffs
-                </Link>
+                </NavLink>
               </Nav.Item>
             )}
             <Nav.Item>
-              <Link to="/categories" className="nav-link">
+              <NavLink to="/categories" className="nav-link">
                 <i className="fa-solid fa-th-list me-2"></i>Categories
-              </Link>
+              </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <Link to="/brands" className="nav-link">
+              <NavLink to="/brands" className="nav-link">
                 <i className="fa-solid fa-star me-2"></i>Brands
-              </Link>
+              </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <Link to="/customers" className="nav-link">
+              <NavLink to="/customers" className="nav-link">
                 <i className="fa-solid fa-user-group me-2"></i>Customers
-              </Link>
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink to="/products" className="nav-link">
+                <i className="fa-solid fa-gifts me-2"></i>Products
+              </NavLink>
             </Nav.Item>
           </Nav>
 

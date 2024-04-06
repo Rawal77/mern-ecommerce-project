@@ -5,12 +5,14 @@ import * as Staffs from "./staffs";
 import * as Categories from "./categories";
 import * as Customers from "./customers";
 import * as Brands from "./brands";
+import * as Products from "./products";
 import { Error404 } from "./errors/Error404";
 
 export {
   List as Dashboard,
   Login,
   Profile,
+  Products,
   Staffs,
   Error404,
   Customers,

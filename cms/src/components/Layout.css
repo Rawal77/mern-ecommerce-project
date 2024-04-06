@@ -6,3 +6,12 @@
 .sortable:hover {
   opacity: 0.85;
 }
+
+.ql-container {
+  height: 200px !important;
+}
+
+.img-sm {
+  height: 100px;
+  width: auto;
+}
