@@ -12,7 +12,7 @@ class ListController {
   };
   categoryById = async (req, res, next) => {
     try {
-      const category = await Category.find({
+      const category = await Category.findById({
         status: true,
         _id: req.params.id,
       });
@@ -31,7 +31,7 @@ class ListController {
   };
   brandById = async (req, res, next) => {
     try {
-      const brand = await Brand.find({
+      const brand = await Brand.findById({
         status: true,
         _id: req.params.id,
       });

@@ -2,9 +2,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import "./Layout.css";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { FrontNav } from "./FrontNav";
+import { useEffect, useState } from "react";
 
 export const Layout = () => {
+  const [term, setTerm] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (term.length) {
+      navigate(`/search?term=${term}`, {
+        replace: true,
+      });
+    }
+  }, [term]);
   return (
     <div className="container-fluid">
       <div className="row min-vh-100">
@@ -47,7 +59,7 @@ export const Layout = () => {
               <div className="row">
                 <div className="col-lg-auto">
                   <div className="site-logo text-center text-lg-left">
-                    <a href="index.html">E-Commerce</a>
+                    <Link to="/">E-Commerce</Link>
                   </div>
                 </div>
                 <div className="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -58,6 +70,7 @@ export const Layout = () => {
                           type="search"
                           className="form-control border-dark"
                           placeholder="Search..."
+                          onChange={ev => setTerm(ev.target.value)}
                           required
                         />
                         <button className="btn btn-outline-dark">
@@ -82,115 +95,7 @@ export const Layout = () => {
                   </a>
                 </div>
               </div>
-
-              <div className="row">
-                <nav className="navbar navbar-expand-lg navbar-light bg-white col-12">
-                  <button
-                    className="navbar-toggler d-lg-none border-0"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#mainNav">
-                    <span className="navbar-toggler-icon"></span>
-                  </button>
-                  <div className="collapse navbar-collapse" id="mainNav">
-                    <ul className="navbar-nav mx-auto mt-2 mt-lg-0">
-                      <li className="nav-item active">
-                        <a className="nav-link" href="index.html">
-                          Home <span className="sr-only">(current)</span>
-                        </a>
-                      </li>
-                      <li className="nav-item dropdown">
-                        <a
-                          className="nav-link dropdown-toggle"
-                          href="#"
-                          id="electronics"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false">
-                          Electronics
-                        </a>
-                        <div
-                          className="dropdown-menu"
-                          aria-labelledby="electronics">
-                          <a className="dropdown-item" href="category.html">
-                            Computers
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Mobile Phones
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Television Sets
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            DSLR Cameras
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Projectors
-                          </a>
-                        </div>
-                      </li>
-                      <li className="nav-item dropdown">
-                        <a
-                          className="nav-link dropdown-toggle"
-                          href="#"
-                          id="fashion"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false">
-                          Fashion
-                        </a>
-                        <div
-                          className="dropdown-menu"
-                          aria-labelledby="fashion">
-                          <a className="dropdown-item" href="category.html">
-                            Men's
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Women's
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Children's
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Accessories
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Footwear
-                          </a>
-                        </div>
-                      </li>
-                      <li className="nav-item dropdown">
-                        <a
-                          className="nav-link dropdown-toggle"
-                          href="#"
-                          id="books"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false">
-                          Books
-                        </a>
-                        <div className="dropdown-menu" aria-labelledby="books">
-                          <a className="dropdown-item" href="category.html">
-                            Adventure
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Horror
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Romantic
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Children's
-                          </a>
-                          <a className="dropdown-item" href="category.html">
-                            Non-Fiction
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
+              <FrontNav></FrontNav>
             </div>
           </header>
         </div>
