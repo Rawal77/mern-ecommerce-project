@@ -16,6 +16,14 @@
       "problemMatcher": [],
       "label": "cms dev",
       "detail": "vite"
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "front",
+      "problemMatcher": [],
+      "label": "front dev",
+      "detail": "vite"
     }
   ]
 }
