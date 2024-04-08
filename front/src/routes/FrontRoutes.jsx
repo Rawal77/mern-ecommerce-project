@@ -19,6 +19,13 @@ export const FrontRoutes = () => {
           <Route
             path="search"
             element={<Pages.Front.Search></Pages.Front.Search>}></Route>
+          <Route
+            path="register"
+            element={<Pages.Auth.Register></Pages.Auth.Register>}></Route>
+          <Route
+            path="login"
+            element={<Pages.Auth.Login></Pages.Auth.Login>}></Route>
+
           <Route index element={<Pages.Front.Home></Pages.Front.Home>}></Route>
         </Route>
         <Route path="*" element={<Pages.Error404></Pages.Error404>}></Route>

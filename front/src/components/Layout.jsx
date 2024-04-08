@@ -5,6 +5,7 @@ import "./Layout.css";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FrontNav } from "./FrontNav";
 import { useEffect, useState } from "react";
+import { TopNav } from "./TopNav";
 
 export const Layout = () => {
   const [term, setTerm] = useState("");
@@ -39,18 +40,7 @@ export const Layout = () => {
                   </ul>
                 </div>
                 <div className="col-auto">
-                  <ul className="top-nav">
-                    <li>
-                      <a href="register.html">
-                        <i className="fas fa-user-edit me-2"></i>Register
-                      </a>
-                    </li>
-                    <li>
-                      <a href="login.html">
-                        <i className="fas fa-sign-in-alt me-2"></i>Login
-                      </a>
-                    </li>
-                  </ul>
+                  <TopNav></TopNav>
                 </div>
               </div>
             </div>
