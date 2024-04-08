@@ -4,7 +4,7 @@ const { Front } = require("../../controllers");
 
 router.get("/category", Front.List.categories);
 router.get("/category/:id", Front.List.categoryById);
-router.get("/category/:id/products", Front.Product.byId);
+router.get("/category/:id/products", Front.Product.byCategoryId);
 
 router.get("/brand", Front.List.brands);
 router.get("/brand/:id", Front.List.brandById);

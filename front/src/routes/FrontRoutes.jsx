@@ -14,6 +14,9 @@ export const FrontRoutes = () => {
             path="brand/:id"
             element={<Pages.Front.Brand></Pages.Front.Brand>}></Route>
           <Route
+            path="product/:id"
+            element={<Pages.Front.Product></Pages.Front.Product>}></Route>
+          <Route
             path="search"
             element={<Pages.Front.Search></Pages.Front.Search>}></Route>
           <Route index element={<Pages.Front.Home></Pages.Front.Home>}></Route>

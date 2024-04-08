@@ -373,6 +373,14 @@ table td img {
   text-justify: inter-word;
 }
 
+.img-large {
+  height: 500px;
+}
+
+.img-small {
+  height: 100px;
+}
+
 @media (max-width: 767.98px) {
   .sidebar {
     border-left: 0 solid #c7c8c9;
