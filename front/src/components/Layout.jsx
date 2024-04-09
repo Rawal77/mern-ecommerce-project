@@ -91,9 +91,9 @@ export const Layout = () => {
                 </div>
                 <div className="col-lg-auto text-center text-lg-left header-item-holder">
                   <span id="header-favorite">
-                    {/* <Link to="/checkout" className="header-item">
+                    <Link to="/checkout" className="header-item">
                       <i className="fas fa-shopping-cart me-2"></i>
-                    </Link> */}
+                    </Link>
                   </span>
                   <Link to="cart" className="header-item">
                     <i className="fas fa-shopping-bag me-2"></i>

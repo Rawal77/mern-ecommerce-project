@@ -38,6 +38,13 @@ export const FrontRoutes = () => {
                 }></PrivateRoutes>
             }></Route>
           <Route
+            path="profile"
+            element={
+              <PrivateRoutes
+                element={<Pages.Dashboard></Pages.Dashboard>}></PrivateRoutes>
+            }></Route>
+
+          <Route
             path="login"
             element={<Pages.Auth.Login></Pages.Auth.Login>}></Route>
 
