@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "../components";
 import * as Pages from "../pages";
 import { PrivateRoutes } from "./PrivateRoutes";
+import { CustomerRoutes } from "./CustomerRoutes";
 
 export const FrontRoutes = () => {
   return (
@@ -27,14 +28,22 @@ export const FrontRoutes = () => {
             path="cart"
             element={
               <PrivateRoutes
-                element={<Pages.Front.Cart></Pages.Front.Cart>}></PrivateRoutes>
+                element={
+                  <CustomerRoutes
+                    element={
+                      <Pages.Front.Cart></Pages.Front.Cart>
+                    }></CustomerRoutes>
+                }></PrivateRoutes>
             }></Route>
           <Route
             path="checkout"
             element={
               <PrivateRoutes
                 element={
-                  <Pages.Front.Checkout></Pages.Front.Checkout>
+                  <CustomerRoutes
+                    element={
+                      <Pages.Front.Checkout></Pages.Front.Checkout>
+                    }></CustomerRoutes>
                 }></PrivateRoutes>
             }></Route>
           <Route
@@ -43,7 +52,6 @@ export const FrontRoutes = () => {
               <PrivateRoutes
                 element={<Pages.Dashboard></Pages.Dashboard>}></PrivateRoutes>
             }></Route>
-
           <Route
             path="login"
             element={<Pages.Auth.Login></Pages.Auth.Login>}></Route>

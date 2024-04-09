@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 export const Layout = () => {
   const cart = useSelector(state => state.cart.value);
+  const user = useSelector(state => state.user.value);
   const [term, setTerm] = useState("");
   const [qty, setQty] = useState(0);
   const [total, setTotal] = useState(0);
@@ -91,18 +92,22 @@ export const Layout = () => {
                 </div>
                 <div className="col-lg-auto text-center text-lg-left header-item-holder">
                   <span id="header-favorite">
-                    <Link to="/checkout" className="header-item">
-                      <i className="fas fa-shopping-cart me-2"></i>
-                    </Link>
+                    {user.type === "Customer" && (
+                      <Link to="/checkout" className="header-item">
+                        <i className="fas fa-shopping-cart me-2"></i>
+                      </Link>
+                    )}
                   </span>
-                  <Link to="cart" className="header-item">
-                    <i className="fas fa-shopping-bag me-2"></i>
-                    <span id="header-qty" className="me-3">
-                      {qty}
-                    </span>
-                    <i className="fas fa-money-bill-wave me-2"></i>
-                    <span id="header-price">Rs. {total}</span>
-                  </Link>
+                  {user.type === "Customer" && (
+                    <Link to="cart" className="header-item">
+                      <i className="fas fa-shopping-bag me-2"></i>
+                      <span id="header-qty" className="me-3">
+                        {qty}
+                      </span>
+                      <i className="fas fa-money-bill-wave me-2"></i>
+                      <span id="header-price">Rs. {total}</span>
+                    </Link>
+                  )}
                 </div>
               </div>
               <FrontNav></FrontNav>

@@ -56,7 +56,7 @@ class ProfileController {
         user_id: req.uid,
       });
       res.json({
-        success: "Thank you for youe review",
+        success: "Thank you for your review",
       });
     } catch (error) {
       showError(error, next);
@@ -77,7 +77,7 @@ class ProfileController {
         });
       }
       res.json({
-        success: "Thank you for your order",
+        success: "Navigated to checkout page",
       });
     } catch (error) {
       showError(error, next);

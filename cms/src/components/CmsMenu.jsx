@@ -49,6 +49,16 @@ export const CmsMenu = () => {
                 <i className="fa-solid fa-gifts me-2"></i>Products
               </NavLink>
             </Nav.Item>
+            <Nav.Item>
+              <NavLink to="/reviews" className="nav-link">
+                <i className="fa-solid fa-comments me-2"></i>Reviews
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink to="/orders" className="nav-link">
+                <i className="fa-solid fa-money-bills me-2"></i>Orders
+              </NavLink>
+            </Nav.Item>
           </Nav>
 
           <Nav className="mb-2 mb-lg-0">
