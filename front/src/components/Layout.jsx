@@ -6,10 +6,29 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FrontNav } from "./FrontNav";
 import { useEffect, useState } from "react";
 import { TopNav } from "./TopNav";
+import { useSelector } from "react-redux";
 
 export const Layout = () => {
+  const cart = useSelector(state => state.cart.value);
   const [term, setTerm] = useState("");
+  const [qty, setQty] = useState(0);
+  const [total, setTotal] = useState(0);
+
   const navigate = useNavigate();
+  useEffect(() => {
+    if (Object.keys(cart).length) {
+      let qt = 0,
+        tl = 0;
+      for (let id in cart) {
+        (qt += cart[id].qty), (tl += cart[id].total);
+      }
+      setQty(qt);
+      setTotal(tl);
+    } else {
+      setQty(0);
+      setTotal(0);
+    }
+  }, [cart]);
 
   useEffect(() => {
     if (term.length) {
@@ -71,18 +90,19 @@ export const Layout = () => {
                   </form>
                 </div>
                 <div className="col-lg-auto text-center text-lg-left header-item-holder">
-                  <a href="#" className="header-item">
-                    <i className="fas fa-heart me-2"></i>
-                    <span id="header-favorite">0</span>
-                  </a>
-                  <a href="cart.html" className="header-item">
+                  <span id="header-favorite">
+                    {/* <Link to="/checkout" className="header-item">
+                      <i className="fas fa-shopping-cart me-2"></i>
+                    </Link> */}
+                  </span>
+                  <Link to="cart" className="header-item">
                     <i className="fas fa-shopping-bag me-2"></i>
                     <span id="header-qty" className="me-3">
-                      2
+                      {qty}
                     </span>
                     <i className="fas fa-money-bill-wave me-2"></i>
-                    <span id="header-price">$4,000</span>
-                  </a>
+                    <span id="header-price">Rs. {total}</span>
+                  </Link>
                 </div>
               </div>
               <FrontNav></FrontNav>

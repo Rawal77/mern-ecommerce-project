@@ -5,12 +5,14 @@ import { Loading } from "./Loading";
 import { ProductList } from "./ProductList";
 import { DataTable } from "./DataTable";
 import { ProductCard } from "./ProductCard";
+import { CartBtn } from "./CartBtn";
 
 export {
   Layout,
   FormField,
   SubmitBtn,
   Loading,
+  CartBtn,
   DataTable,
   ProductList,
   ProductCard,

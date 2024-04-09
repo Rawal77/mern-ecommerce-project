@@ -4,7 +4,7 @@ import http from "../../http";
 import { imgUrl } from "../../lib";
 import { Loading, ProductList, SubmitBtn } from "../../components";
 import { useSelector } from "react-redux";
-// import { CartBtn } from "../../components/CartBtn";
+import { CartBtn } from "../../components";
 import moment from "moment";
 
 export const Product = () => {
@@ -164,14 +164,7 @@ export const Product = () => {
                     </div>
                   </div>
                   <div className="col-12 mt-3">
-                    {/* <CartBtn product={product} qty={qty}></CartBtn> */}
-                  </div>
-                  <div className="col-12 mt-3">
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      type="button">
-                      <i className="fas fa-heart me-2"></i>Add to wishlist
-                    </button>
+                    <CartBtn product={product} qty={qty}></CartBtn>
                   </div>
                 </div>
               </div>
@@ -287,7 +280,6 @@ export const Product = () => {
                                 {stars["1"].toFixed(1)}%
                               </div>
                             </div>
-
                             <div className="rating-progress-label">
                               1<i className="fas fa-star ms-1"></i>
                             </div>

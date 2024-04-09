@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "../components";
 import * as Pages from "../pages";
+import { PrivateRoutes } from "./PrivateRoutes";
 
 export const FrontRoutes = () => {
   return (
@@ -22,6 +23,20 @@ export const FrontRoutes = () => {
           <Route
             path="register"
             element={<Pages.Auth.Register></Pages.Auth.Register>}></Route>
+          <Route
+            path="cart"
+            element={
+              <PrivateRoutes
+                element={<Pages.Front.Cart></Pages.Front.Cart>}></PrivateRoutes>
+            }></Route>
+          <Route
+            path="checkout"
+            element={
+              <PrivateRoutes
+                element={
+                  <Pages.Front.Checkout></Pages.Front.Checkout>
+                }></PrivateRoutes>
+            }></Route>
           <Route
             path="login"
             element={<Pages.Auth.Login></Pages.Auth.Login>}></Route>
