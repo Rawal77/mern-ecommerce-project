@@ -62,6 +62,13 @@ class ProductController {
         featured,
       } = req.body;
       const images = req.files.map(img => img.filename);
+      if (discounted_price >= price) {
+        next({
+          status: 400,
+          message: "Discounted price should be less than price",
+        });
+        return;
+      }
       await Product.create({
         name,
         summary,
@@ -106,6 +113,13 @@ class ProductController {
         featured,
       } = req.body;
       const images = [...product.images, ...req.files.map(img => img.filename)];
+      if (discounted_price >= price) {
+        next({
+          status: 400,
+          message: "Discounted price should be less than price",
+        });
+        return;
+      }
       await Product.findByIdAndUpdate(req.params.id, {
         name,
         summary,

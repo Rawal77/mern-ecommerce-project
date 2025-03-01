@@ -82,10 +82,10 @@ class StaffController {
   };
   destroy = async (req, res, next) => {
     try {
-      await User.findByIdAndDelete(req.params.id)
+      await User.findByIdAndDelete(req.params.id);
       res.json({
-        success : 'staff removed'
-      })
+        success: "staff removed",
+      });
     } catch (error) {
       showError(error, next);
     }

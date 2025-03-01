@@ -10,8 +10,15 @@ const auth = async (req, res, next) => {
       const uid = decoded.id;
       const user = await User.findById(uid);
       if (user) {
-        (req.uid = uid), (req.user = user);
-        next();
+        if (user.status == true) {
+          (req.uid = uid), (req.user = user);
+          next();
+        } else {
+          next({
+            status: 403,
+            message: "Status is inactive please contact",
+          });
+        }
       } else {
         next({
           status: 401,

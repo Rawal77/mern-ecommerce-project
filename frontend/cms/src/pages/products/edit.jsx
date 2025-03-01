@@ -26,11 +26,13 @@ export const Edit = () => {
     http
       .get("cms/categories")
       .then(({ data }) => {
-        setCategories(data);
+        const filteredCategories = data.filter(cat => cat.status === true);
+        setCategories(filteredCategories);
         return http.get("cms/brands");
       })
       .then(({ data }) => {
-        setBrands(data);
+        const filteredBrands = data.filter(brand => brand.status === true);
+        setBrands(filteredBrands);
         return http.get(`cms/products/${params.id}`);
       })
       .then(({ data }) => setProduct(data))

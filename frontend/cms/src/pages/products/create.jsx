@@ -23,10 +23,14 @@ export const Create = () => {
     http
       .get("cms/categories")
       .then(({ data }) => {
-        setCategories(data);
+        const filteredCategories = data.filter(cat => cat.status === true);
+        setCategories(filteredCategories);
         return http.get("cms/brands");
       })
-      .then(({ data }) => setBrands(data))
+      .then(({ data }) => {
+        const filteredBrands = data.filter(brand => brand.status === true);
+        setBrands(filteredBrands);
+      })
       .catch(err => {})
       .finally(() => setLoadingPage(false));
   }, []);

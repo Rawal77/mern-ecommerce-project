@@ -58,10 +58,10 @@ export const Home = () => {
         <div className="col-12">
           <hr />
         </div>
-        <ProductList
+        {/* <ProductList
           title="Top Selling Products"
           products={topSelling}
-          loading={loading}></ProductList>
+          loading={loading}></ProductList> */}
       </main>
     </div>
   );
