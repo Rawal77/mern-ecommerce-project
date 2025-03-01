@@ -50,13 +50,18 @@ VITE_API_URL="http://localhost:5000"
 ```bash
 git clone https://github.com/Rawal77/ml-learning-journey.git  
 cd ml-learning-journey
+```
 
-### 2. Setup Backend  
+### 2. Setup Backend 
+```bash
 cd server  
 npm install  
 npm start
+```
 
 ### 3. Setup CMS and Frontend (Admin Dashboard & User interface)
+```bash
 cd frontend  
-npm install  
+npm install
+```
 npm run dev 
